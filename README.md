@@ -1,2 +1,2 @@
-# swift-map
-Iphone app - User position history
+# User Map from location history
+iOS App - User position history
