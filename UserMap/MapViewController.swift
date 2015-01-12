@@ -11,6 +11,7 @@ import UIKit
 class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet var mapView: GMSMapView!
+    @IBOutlet var zoomStepper: UIStepper!
     
     let locationManager = CLLocationManager()
     
@@ -19,8 +20,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         // log
         println("STATUS : APP STARTING");
-        
-        mapView.setMinZoom(4.0, maxZoom: 15.0)
         
         // Add a flag
         /*
@@ -31,24 +30,50 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         marker.map = self.mapView
         */
         
-        // Ask access to user location
+        // Configure view default parameters
+        self.configure()
+        
+        // Start locationManager
+        self.startLocationManager()
+    }
+    
+    // Configure view default parameters
+    func configure()
+    {
+        self.mapView.setMinZoom(4.0, maxZoom: 15.0)
+    }
+    
+    // Ask access to user location
+    func startLocationManager()
+    {
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
-        
-        println("\(self.mapView.myLocation)")
-        if let mylocation = self.mapView.myLocation {
-            NSLog("\(mylocation)")
-        } else {
-            NSLog("User's location is unknown")
+    }
+    
+    // Map Types action
+    @IBAction func mapTypeSegmentPressed(sender: AnyObject) {
+        let segmentedControl = sender as UISegmentedControl
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            self.mapView.mapType = kGMSTypeNormal
+        case 1:
+            self.mapView.mapType = kGMSTypeSatellite
+        case 2:
+            self.mapView.mapType = kGMSTypeHybrid
+        default:
+            self.mapView.mapType = kGMSTypeNormal
         }
-        
+    }
+    
+    // Map Zoom action
+    @IBAction func zoomStepperAction(sender: UIStepper) {
+        self.mapView.animateToZoom(Float(sender.value));
     }
     
     // Invoke CLLocationManagerDelegate when the user grants or revokes location permissions
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
         if status == .AuthorizedWhenInUse {
-
             self.locationManager.startUpdatingLocation()
  
             self.mapView.myLocationEnabled = true
@@ -56,15 +81,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    
+    
     // CLLocationManagerDelegate executes when the location manager receives new location data
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        
         if let location = locations.first as? CLLocation {
     
+            // Reset camera position
             self.mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-
+            self.updateStepperZoomValue()
             self.locationManager.stopUpdatingLocation()
         }
+    }
+    
+    // Update zoomStepperValue
+    func updateStepperZoomValue()
+    {
+        self.zoomStepper.value = Double(self.mapView.camera.zoom);
     }
 
     override func didReceiveMemoryWarning() {
