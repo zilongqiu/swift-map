@@ -32,6 +32,9 @@
 		A5FDA0491A61B04E00A12A8B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FDA0481A61B04E00A12A8B /* SystemConfiguration.framework */; };
 		A5FDA04A1A61B23300A12A8B /* GoogleMaps.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FDA0331A61AF6600A12A8B /* GoogleMaps.bundle */; };
 		A5FDA04C1A61D84800A12A8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA04B1A61D84800A12A8B /* ViewController.swift */; };
+		A5FDA07E1A65D39900A12A8B /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA07D1A65D39900A12A8B /* PlacesTableViewController.swift */; };
+		A5FDA0801A65DEFE00A12A8B /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA07F1A65DEFE00A12A8B /* Place.swift */; };
+		A5FDA0821A65DF4A00A12A8B /* PlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA0811A65DF4A00A12A8B /* PlaceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1029,6 +1032,9 @@
 		A5FDA0451A61B03300A12A8B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		A5FDA0481A61B04E00A12A8B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A5FDA04B1A61D84800A12A8B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A5FDA07D1A65D39900A12A8B /* PlacesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
+		A5FDA07F1A65DEFE00A12A8B /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		A5FDA0811A65DF4A00A12A8B /* PlaceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceManager.swift; sourceTree = "<group>"; };
 		B27E6B7DC11FDCA7AB28DD9A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -2615,6 +2621,9 @@
 				A5FDA01D1A61AA8700A12A8B /* AppDelegate.swift */,
 				A5FDA04B1A61D84800A12A8B /* ViewController.swift */,
 				A5FDA0271A61AA8700A12A8B /* MapViewController.swift */,
+				A5FDA07D1A65D39900A12A8B /* PlacesTableViewController.swift */,
+				A5FDA07F1A65DEFE00A12A8B /* Place.swift */,
+				A5FDA0811A65DF4A00A12A8B /* PlaceManager.swift */,
 				A5FDA01E1A61AA8700A12A8B /* LaunchScreen.xib */,
 				A5FDA0201A61AA8700A12A8B /* Main.storyboard */,
 				A5FDA0231A61AA8700A12A8B /* Images.xcassets */,
@@ -2864,7 +2873,10 @@
 				A5FDA02E1A61AA8700A12A8B /* MapViewController.swift in Sources */,
 				A5FDA0281A61AA8700A12A8B /* AppDelegate.swift in Sources */,
 				A5FDA04C1A61D84800A12A8B /* ViewController.swift in Sources */,
+				A5FDA0801A65DEFE00A12A8B /* Place.swift in Sources */,
+				A5FDA0821A65DF4A00A12A8B /* PlaceManager.swift in Sources */,
 				A5FDA02D1A61AA8700A12A8B /* UserMap.xcdatamodeld in Sources */,
+				A5FDA07E1A65D39900A12A8B /* PlacesTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

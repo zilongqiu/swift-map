@@ -81,8 +81,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
-    
     // CLLocationManagerDelegate executes when the location manager receives new location data
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         if let location = locations.first as? CLLocation {
