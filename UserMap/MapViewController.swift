@@ -13,6 +13,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var mapView: GMSMapView!
     @IBOutlet var zoomStepper: UIStepper!
     
+    var placeManager: PlaceManager!;
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -97,11 +98,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     {
         self.zoomStepper.value = Double(self.mapView.camera.zoom);
     }
+    
+    // MARK: - Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "addPlace") {
+            println("LOG : addPlace Segue performed")
+            let vc = segue.destinationViewController as AddPlaceController
+            vc.placeManager = self.placeManager
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
 
 }

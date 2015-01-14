@@ -67,6 +67,15 @@ class PlacesTableViewController: UITableViewController {
     
         return cell;
     }
+    
+    // MARK: - Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "showMap") {
+            println("LOG : showMap Segue performed")
+            let vc = segue.destinationViewController as MapViewController
+            vc.placeManager = self.placeManager
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
