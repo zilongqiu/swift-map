@@ -269,7 +269,7 @@
                             </tableViewSection>
                         </sections>
                         <connections>
-                            <outlet property="dataSource" destination="8wH-nU-U3Y" id="PFq-Cb-XjQ"/>
+                            <outlet property="dataSource" destination="8wH-nU-U3Y" id="XN5-fc-LqX"/>
                             <outlet property="delegate" destination="8wH-nU-U3Y" id="pxt-o2-crC"/>
                         </connections>
                     </tableView>

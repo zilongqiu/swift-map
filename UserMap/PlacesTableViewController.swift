@@ -62,6 +62,7 @@ class PlacesTableViewController: UITableViewController {
     
         cell.textLabel?.text = self.placeManager.places[indexPath.row].name;
     
+        println(self.placeManager.places[indexPath.row].type)
         var imageName = UIImage(named: self.placeManager.places[indexPath.row].type);
         cell.imageView?.image = imageName;
     

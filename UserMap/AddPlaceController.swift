@@ -37,6 +37,7 @@ class AddPlaceController: UITableViewController {
         self.comment.layer.cornerRadius = 5.0
     }
     
+    // MARK: - Actions
     @IBAction func currentAddress(sender: AnyObject) {
         var currentLocation = self.locationManager.location
   
@@ -70,7 +71,7 @@ class AddPlaceController: UITableViewController {
         else {
             var place = Place()
             place.name    = self.name.text
-            place.type    = self.typeSelected
+            place.type    = (self.typeSelected == "") ? self.types[0] : self.typeSelected
             place.address = self.address.text
             place.note    = self.note.value
             place.comment = self.comment.text
@@ -86,6 +87,15 @@ class AddPlaceController: UITableViewController {
             self.dismissViewControllerAnimated(true, completion: {});
         }
         
+    }
+    
+    // MARK: - Table
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if(indexPath.row == 3 || indexPath.row == 4){
+            return CGFloat(150.0)
+        }else{
+            return CGFloat(44.0)
+        }
     }
 
     // MARK: - Text field

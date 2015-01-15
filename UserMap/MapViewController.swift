@@ -19,9 +19,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // log
-        println("STATUS : APP STARTING");
-        
         // Add a flag
         /*
         var marker = GMSMarker()
