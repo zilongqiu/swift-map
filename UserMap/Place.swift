@@ -8,12 +8,12 @@
 
 class Place {
     
-    var name     = "";
-    var type     = "";
-    var address  = "";
-    var city     = "";
-    var zip_code = "";
-    
-    
+    var name: String     = ""
+    var type: String     = ""
+    var address: String  = ""
+    var note: Float      = 10.0
+    var comment: String  = ""
+    var longitude: Float = 0.0
+    var latitude: Float  = 0.0
     
 }

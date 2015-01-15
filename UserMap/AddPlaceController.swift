@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AddressBookUI
 
 class AddPlaceController: UITableViewController {
 
@@ -16,46 +17,111 @@ class AddPlaceController: UITableViewController {
     @IBOutlet var note: UISlider!
     @IBOutlet var type: UIPickerView!
     @IBOutlet var comment: UITextView!
+    @IBOutlet var navigationBar: UINavigationBar!
+    
+    let placeHolderText = "Commentaire"
+    let locationManager = CLLocationManager()
     
     var placeManager: PlaceManager!
-    var types = ["Burger","Hotel","Green","Blue"]
+    var geocoder             = CLGeocoder()
+    var types                = ["Restaurant","Hotel","Monument","Musee","Autres"]
     var typeSelected: String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set border for text view
+        self.comment.layer.borderWidth  = 0.5
+        self.comment.layer.borderColor  = UIColor.lightGrayColor().CGColor
+        self.comment.layer.cornerRadius = 5.0
     }
     
-    @IBAction func submit(sender: AnyObject) {
+    @IBAction func currentAddress(sender: AnyObject) {
+        var currentLocation = self.locationManager.location
+  
+        geocoder.reverseGeocodeLocation(self.locationManager.location, completionHandler:{(placemarks, error) in
+            if (error != nil) {
+                println("reverse geodcode fail: \(error.localizedDescription)")
+            }
+            
+            let pm = placemarks as [CLPlacemark]
+            if pm.count > 0 {
+                let currentPlacemark: CLPlacemark = placemarks[0] as CLPlacemark
+                self.address.text = ABCreateStringWithAddressDictionary(currentPlacemark.addressDictionary, true)
+            }
+        })
         
-        var error = false;
+    }
+
+    @IBAction func cancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {});
+    }
+
+    @IBAction func save(sender: AnyObject) {
         
         if(self.name.text.isEmpty || self.address.text.isEmpty) {
-            error = true;
-        }
-        
-        if(error) {
-            let alert = UIAlertView()
-            alert.title = "Erreur"
+            let alert     = UIAlertView()
+            alert.title   = "Erreur"
             alert.message = "Veuillez saisir les champs obligatoires !"
             alert.addButtonWithTitle("J'ai compris !")
             alert.show()
         }
         else {
             var place = Place()
-            place.name    = name.text;
+            place.name    = self.name.text
             place.type    = self.typeSelected
-            place.address = address.text;
+            place.address = self.address.text
+            place.note    = self.note.value
+            place.comment = self.comment.text
+            
+            geocoder.geocodeAddressString(self.address.text, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
+                if let placemark = placemarks?[0] as? CLPlacemark {
+                    place.longitude = Float(placemark.location.coordinate.longitude)
+                    place.latitude  = Float(placemark.location.coordinate.latitude)
+                }
+            })
             
             self.placeManager.places.append(place);
             self.dismissViewControllerAnimated(true, completion: {});
         }
         
     }
-    
+
     // MARK: - Text field
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         self.view.endEditing(true);
         return false;
+    }
+    
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        
+        self.comment.textColor = UIColor.blackColor()
+        
+        if(self.comment.text == placeHolderText) {
+            self.comment.text = ""
+        }
+        
+        return true
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if(self.comment.text == "") {
+            self.comment.text = placeHolderText
+            self.comment.textColor = UIColor.lightGrayColor()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        if(self.comment.text == "") {
+            self.comment.text = placeHolderText
+            self.comment.textColor = UIColor.lightGrayColor()
+        } else {
+            self.comment.text = self.comment.text
+            self.comment.textColor = UIColor.blackColor()
+        }
+
     }
     
     // MARK: - Text view

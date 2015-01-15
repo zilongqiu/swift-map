@@ -13,7 +13,6 @@
 		A5FDA0291A61AA8700A12A8B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5FDA01E1A61AA8700A12A8B /* LaunchScreen.xib */; };
 		A5FDA02A1A61AA8700A12A8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5FDA0201A61AA8700A12A8B /* Main.storyboard */; };
 		A5FDA02B1A61AA8700A12A8B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5FDA0231A61AA8700A12A8B /* Images.xcassets */; };
-		A5FDA02C1A61AA8700A12A8B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5FDA0241A61AA8700A12A8B /* Info.plist */; };
 		A5FDA02D1A61AA8700A12A8B /* UserMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA0251A61AA8700A12A8B /* UserMap.xcdatamodeld */; };
 		A5FDA02E1A61AA8700A12A8B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA0271A61AA8700A12A8B /* MapViewController.swift */; };
 		A5FDA0321A61AE3100A12A8B /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FDA0311A61AE3100A12A8B /* GoogleMaps.framework */; };
@@ -2839,7 +2838,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5FDA02C1A61AA8700A12A8B /* Info.plist in Resources */,
 				A5FDA02B1A61AA8700A12A8B /* Images.xcassets in Resources */,
 				A5FDA0291A61AA8700A12A8B /* LaunchScreen.xib in Resources */,
 				A5FDA02A1A61AA8700A12A8B /* Main.storyboard in Resources */,

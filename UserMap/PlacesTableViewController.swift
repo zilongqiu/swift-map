@@ -29,13 +29,13 @@ class PlacesTableViewController: UITableViewController {
         // Add some places
         let place1 = Place()
         place1.name = "Wc Donalds"
-        place1.type = "Burger"
+        place1.type = "Restaurant"
         self.placeManager.places.append(place1)
         self.tableView.reloadData()
         
         let place2 = Place()
         place2.name = "DFC"
-        place2.type = "Burger"
+        place2.type = "Restaurant"
         self.placeManager.places.append(place2)
         self.tableView.reloadData()
     }

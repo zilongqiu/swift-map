@@ -138,7 +138,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nom" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cml-Lk-qvn">
-                                                    <rect key="frame" x="139" y="11" width="228" height="30"/>
+                                                    <rect key="frame" x="139" y="7" width="228" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -163,9 +163,12 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPJ-hi-4Ff">
                                                     <rect key="frame" x="307" y="10" width="60" height="27"/>
                                                     <state key="normal" title="J'y suis"/>
+                                                    <connections>
+                                                        <action selector="currentAddress:" destination="8wH-nU-U3Y" eventType="touchUpInside" id="N4C-uF-wNX"/>
+                                                    </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Adresse" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="amd-cb-LrM">
-                                                    <rect key="frame" x="139" y="9" width="155" height="30"/>
+                                                    <rect key="frame" x="139" y="7" width="155" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
@@ -213,7 +216,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="OFY-c9-YBS">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="150" id="OFY-c9-YBS">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OFY-c9-YBS" id="dkC-YQ-OKl">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -224,8 +227,8 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Avis :" translatesAutoresizingMaskIntoConstraints="NO" id="gyh-bZ-iXs">
-                                                    <rect key="frame" x="141" y="11" width="226" height="79"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gyh-bZ-iXs">
+                                                    <rect key="frame" x="141" y="11" width="226" height="131"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
@@ -236,18 +239,27 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="HaV-Mq-LvX">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="xUl-kc-hx6">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HaV-Mq-LvX" id="g5T-bN-Yd5">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xUl-kc-hx6" id="ePf-dp-O5i">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vz5-C1-b2Z">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DWi-e7-gXL">
+                                                    <rect key="frame" x="35" y="7" width="53" height="30"/>
+                                                    <state key="normal" title="Annuler">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="cancel:" destination="8wH-nU-U3Y" eventType="touchUpInside" id="cIV-1M-DrH"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eu-MU-bLH">
+                                                    <rect key="frame" x="265" y="7" width="74" height="30"/>
                                                     <state key="normal" title="Enregistrer">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="submit:" destination="8wH-nU-U3Y" eventType="touchUpInside" id="nCH-Dc-db0"/>
+                                                        <action selector="save:" destination="8wH-nU-U3Y" eventType="touchUpInside" id="qU9-YF-ypP"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -261,7 +273,6 @@
                             <outlet property="delegate" destination="8wH-nU-U3Y" id="pxt-o2-crC"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="CiJ-QW-6lz"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="address" destination="amd-cb-LrM" id="vJY-GF-6vn"/>
@@ -273,7 +284,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ssI-Rt-kIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="769.5" y="277.5"/>
+            <point key="canvasLocation" x="781.5" y="277.5"/>
         </scene>
     </scenes>
 </document>
