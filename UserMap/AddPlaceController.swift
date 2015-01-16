@@ -26,7 +26,7 @@ class AddPlaceController: UITableViewController {
     var geocoder             = CLGeocoder()
     var types                = ["Restaurant","Hotel","Monument","Musee","Autres"]
     var typeSelected: String = ""
-    
+    var onDataAvailable : ((iconName: String, data: CLPlacemark) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,11 @@ class AddPlaceController: UITableViewController {
         self.comment.layer.borderWidth  = 0.5
         self.comment.layer.borderColor  = UIColor.lightGrayColor().CGColor
         self.comment.layer.cornerRadius = 5.0
+    }
+    
+    // Send placemark mark if exist to MapViewController
+    func sendData(iconName: String, data: CLPlacemark) {
+        self.onDataAvailable?(iconName: iconName, data: data)
     }
     
     // MARK: - Actions
@@ -80,10 +85,16 @@ class AddPlaceController: UITableViewController {
                 if let placemark = placemarks?[0] as? CLPlacemark {
                     place.longitude = Float(placemark.location.coordinate.longitude)
                     place.latitude  = Float(placemark.location.coordinate.latitude)
+                    
+                    // Send new location in MapViewController
+                    self.sendData(place.type, data: placemark)
                 }
             })
             
+            // Add a Place in the manager
             self.placeManager.places.append(place);
+            
+            // Dismiss the modal
             self.dismissViewControllerAnimated(true, completion: {});
         }
         

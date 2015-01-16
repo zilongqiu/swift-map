@@ -2642,8 +2642,8 @@
 		A5FDA0831A67011D00A12A8B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A5FDA0271A61AA8700A12A8B /* MapViewController.swift */,
 				A5FDA07D1A65D39900A12A8B /* PlacesTableViewController.swift */,
+				A5FDA0271A61AA8700A12A8B /* MapViewController.swift */,
 				A5FDA0861A6716E100A12A8B /* AddPlaceController.swift */,
 			);
 			name = Controller;

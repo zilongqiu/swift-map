@@ -76,15 +76,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
  
             self.mapView.myLocationEnabled = true
             self.mapView.settings.myLocationButton = true
-        }
-    }
-    
-    // CLLocationManagerDelegate executes when the location manager receives new location data
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        if let location = locations.first as? CLLocation {
-    
+            
             // Reset camera position
-            self.mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            self.mapView.camera = GMSCameraPosition(target: self.locationManager.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
             self.updateStepperZoomValue()
             self.locationManager.stopUpdatingLocation()
         }
@@ -98,11 +92,38 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        // Allow modal to send data to the map
+        if let viewController = segue.destinationViewController as? AddPlaceController {
+            viewController.onDataAvailable = {[weak self]
+                (iconName, data) in
+                if let weakSelf = self {
+                    weakSelf.modalData(iconName, data: data)
+                }
+            }
+        }
+        
         if (segue.identifier == "addPlace") {
-            println("LOG : addPlace Segue performed")
             let vc = segue.destinationViewController as AddPlaceController
             vc.placeManager = self.placeManager
         }
+    }
+    
+    // Modal data sended
+    func modalData(iconName: String, data: CLPlacemark) {
+        self.locationManager.startUpdatingLocation()
+        
+        // Create marker
+        var position = CLLocationCoordinate2DMake(data.location.coordinate.latitude, data.location.coordinate.longitude)
+        var marker = GMSMarker(position: position)
+        marker.icon = UIImage(named: iconName)
+        marker.map = self.mapView;
+        
+        // Camera position
+        self.mapView.camera = GMSCameraPosition(target: data.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        
+        self.updateStepperZoomValue()
+        self.locationManager.stopUpdatingLocation()
     }
 
     override func didReceiveMemoryWarning() {

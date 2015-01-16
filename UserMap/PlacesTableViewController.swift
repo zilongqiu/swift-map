@@ -62,7 +62,6 @@ class PlacesTableViewController: UITableViewController {
     
         cell.textLabel?.text = self.placeManager.places[indexPath.row].name;
     
-        println(self.placeManager.places[indexPath.row].type)
         var imageName = UIImage(named: self.placeManager.places[indexPath.row].type);
         cell.imageView?.image = imageName;
     
@@ -72,7 +71,6 @@ class PlacesTableViewController: UITableViewController {
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showMap") {
-            println("LOG : showMap Segue performed")
             let vc = segue.destinationViewController as MapViewController
             vc.placeManager = self.placeManager
         }
