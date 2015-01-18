@@ -14,7 +14,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var zoomStepper: UIStepper!
     
     var placeManager: PlaceManager!;
-    let locationManager = CLLocationManager()
+    let     locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A51D26E81A6C58B500EC38E9 /* PlaceDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D26E71A6C58B500EC38E9 /* PlaceDetailController.swift */; };
 		A53127D51A6014EC00DE20CD /* UserMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53127D41A6014EC00DE20CD /* UserMapTests.swift */; };
 		A5312C191A616DEA00DE20CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5312BE01A616BC200DE20CD /* libPods.a */; };
 		A5FDA0281A61AA8700A12A8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA01D1A61AA8700A12A8B /* AppDelegate.swift */; };
@@ -119,6 +120,7 @@
 /* Begin PBXFileReference section */
 		52A6CF172F9A1AFE7383C1A9 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		77E5262E31C2BDC444818E43 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A51D26E71A6C58B500EC38E9 /* PlaceDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailController.swift; sourceTree = "<group>"; };
 		A53127B61A6014EC00DE20CD /* UserMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53127CE1A6014EC00DE20CD /* UserMapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserMapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53127D31A6014EC00DE20CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -2645,6 +2647,7 @@
 				A5FDA07D1A65D39900A12A8B /* PlacesTableViewController.swift */,
 				A5FDA0271A61AA8700A12A8B /* MapViewController.swift */,
 				A5FDA0861A6716E100A12A8B /* AddPlaceController.swift */,
+				A51D26E71A6C58B500EC38E9 /* PlaceDetailController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -2894,6 +2897,7 @@
 			files = (
 				A5FDA0871A6716E100A12A8B /* AddPlaceController.swift in Sources */,
 				A5FDA02E1A61AA8700A12A8B /* MapViewController.swift in Sources */,
+				A51D26E81A6C58B500EC38E9 /* PlaceDetailController.swift in Sources */,
 				A5FDA0281A61AA8700A12A8B /* AppDelegate.swift in Sources */,
 				A5FDA0801A65DEFE00A12A8B /* Place.swift in Sources */,
 				A5FDA0821A65DF4A00A12A8B /* PlaceManager.swift in Sources */,
