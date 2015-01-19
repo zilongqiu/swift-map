@@ -11,6 +11,7 @@ class Place {
     var name: String                 = ""
     var type: String                 = ""
     var address: String              = ""
+    var country: String              = ""
     var note: Float                  = 10.0
     var comment: String              = ""
     var longitude: CLLocationDegrees = 0.0

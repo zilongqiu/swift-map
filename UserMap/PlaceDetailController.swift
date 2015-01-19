@@ -37,7 +37,18 @@ class PlaceDetailController: UIViewController, CLLocationManagerDelegate {
         self.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         self.locationManager.stopUpdatingLocation()
         
-
+        // Text field
+        var text: String = ""
+        var note: Int  = Int(self.place.note)
+        text = "Adresse : \(self.place.address)\n\n" +
+               "Pays : \(self.place.country)\n\n" +
+               "Note : \(note)/20\n\n" +
+               "Type : \(self.place.type)\n\n"
+        
+        if(!self.place.comment.isEmpty) {
+            text += "Commentaire : \(self.place.comment)"
+        }
+        self.textField.text = text
     }
 
     override func didReceiveMemoryWarning() {

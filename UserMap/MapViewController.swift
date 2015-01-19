@@ -24,6 +24,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         // Start locationManager
         self.startLocationManager()
+        
+        // Add all locationManager places marker
+        self.showLocationMarkers(self.placeManager)
     }
     
     // Configure view default parameters
@@ -37,6 +40,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     {
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
+    }
+    
+    func showLocationMarkers(placeManager: PlaceManager)
+    {
+        var places = placeManager.places;
+        
+        self.locationManager.startUpdatingLocation()
+        for (place) in places {
+            // Create marker
+            var position = CLLocationCoordinate2DMake(place.latitude, place.longitude)
+            var marker = GMSMarker(position: position)
+            marker.icon = UIImage(named: place.type)
+            marker.map = self.mapView;
+        }
+        self.locationManager.stopUpdatingLocation()
     }
     
     // Map Types action

@@ -10,4 +10,5 @@ class PlaceManager {
     
     var places = [Place]();
     
+    
 }

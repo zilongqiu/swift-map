@@ -79,12 +79,16 @@ class AddPlaceController: UITableViewController {
             place.type    = (self.typeSelected == "") ? self.types[0] : self.typeSelected
             place.address = self.address.text
             place.note    = self.note.value
-            place.comment = self.comment.text
+            
+            if(self.comment.text != placeHolderText) {
+                place.comment = self.comment.text
+            }
             
             geocoder.geocodeAddressString(self.address.text, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
                 if let placemark = placemarks?[0] as? CLPlacemark {
                     place.longitude = placemark.location.coordinate.longitude
                     place.latitude  = placemark.location.coordinate.latitude
+                    place.country   = placemark.country
                     
                     // Send new location in MapViewController
                     self.sendData(place.type, data: placemark)
