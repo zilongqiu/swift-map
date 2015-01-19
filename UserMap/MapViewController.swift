@@ -14,19 +14,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var zoomStepper: UIStepper!
     
     var placeManager: PlaceManager!;
-    let     locationManager = CLLocationManager()
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Add a flag
-        /*
-        var marker = GMSMarker()
-        marker.position = CLLocationCoordinate2DMake(41.887, -87.622)
-        marker.appearAnimation = kGMSMarkerAnimationPop
-        marker.icon = UIImage(named: "flag_icon")
-        marker.map = self.mapView
-        */
         
         // Configure view default parameters
         self.configure()
@@ -76,10 +67,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
  
             self.mapView.myLocationEnabled = true
             self.mapView.settings.myLocationButton = true
-            
-            // Reset camera position
-            self.mapView.camera = GMSCameraPosition(target: self.locationManager.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
-            self.updateStepperZoomValue()
+
             self.locationManager.stopUpdatingLocation()
         }
     }

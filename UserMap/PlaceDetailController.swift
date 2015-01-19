@@ -8,12 +8,36 @@
 
 import UIKit
 
-class PlaceDetailController: UIViewController {
+class PlaceDetailController: UIViewController, CLLocationManagerDelegate {
 
+    @IBOutlet var mapView: GMSMapView!
+    @IBOutlet var textField: UITextView!
+    @IBOutlet var menuBarTitle: UINavigationItem!
+    
+    var place: Place!;
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Title
+        self.menuBarTitle.title = place.name
+        
+        // Map
+        self.locationManager.delegate = self
+        self.locationManager.startUpdatingLocation()
+        // Create marker
+        let position = CLLocationCoordinate2DMake(place.latitude, place.longitude)
+        var marker = GMSMarker(position: position)
+        marker.icon = UIImage(named: place.type)
+        marker.map = self.mapView;
+        
+        // Camera position
+        let coordinate = CLLocationCoordinate2DMake(place.latitude, place.longitude)
+        self.mapView.camera = GMSCameraPosition(target: coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        self.locationManager.stopUpdatingLocation()
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +45,4 @@ class PlaceDetailController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

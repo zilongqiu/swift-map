@@ -8,12 +8,12 @@
 
 class Place {
     
-    var name: String     = ""
-    var type: String     = ""
-    var address: String  = ""
-    var note: Float      = 10.0
-    var comment: String  = ""
-    var longitude: Float = 0.0
-    var latitude: Float  = 0.0
+    var name: String                 = ""
+    var type: String                 = ""
+    var address: String              = ""
+    var note: Float                  = 10.0
+    var comment: String              = ""
+    var longitude: CLLocationDegrees = 0.0
+    var latitude: CLLocationDegrees  = 0.0
     
 }
