@@ -35,6 +35,7 @@ class AddPlaceController: UITableViewController {
         self.comment.layer.borderWidth  = 0.5
         self.comment.layer.borderColor  = UIColor.lightGrayColor().CGColor
         self.comment.layer.cornerRadius = 5.0
+        
     }
     
     // Send placemark mark if exist to MapViewController

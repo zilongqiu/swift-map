@@ -11,4 +11,14 @@ class PlaceManager {
     var places = [Place]();
     
     
+    // Get a place at index
+    func getPlaceAtIndex(index: Int) -> Place {
+        return self.places[index];
+    }
+    
+    // Get place number
+    func count() -> Int {
+        return self.places.count
+    }
+    
 }

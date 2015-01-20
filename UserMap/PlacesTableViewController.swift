@@ -17,40 +17,42 @@ class PlacesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Configuration
+        // Configure view default parameters
         self.configure()
     }
     
+    // MARK: - Configs
     func configure() {
         // Menu bar item right icon - Map
         let mapImg = UIImage(named: "icon_map")
         self.iconMap.setBackgroundImage(mapImg, forState: .Normal, barMetrics: .Default)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    
     // MARK: - Table view data source
-
+    // Section number
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
+    // Row number
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.placeManager.places.count
+        return self.placeManager.count()
     }
 
-
+    // Cell configuration
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCellWithIdentifier("placeCell") as UITableViewCell;
+        
+        // Get the place
+        var place = self.placeManager.getPlaceAtIndex(indexPath.row)
     
-        cell.textLabel?.text = self.placeManager.places[indexPath.row].name;
+        // Place name
+        cell.textLabel?.text = place.name
     
-        var imageName = UIImage(named: self.placeManager.places[indexPath.row].type);
-        cell.imageView?.image = imageName;
+        // Place type icon
+        var imageName = UIImage(named: place.type)
+        cell.imageView?.image = imageName
     
         return cell;
     }
@@ -64,7 +66,7 @@ class PlacesTableViewController: UITableViewController {
         else if (segue.identifier == "placeDetail") {
             let selectedIndex = self.tableView.indexPathForCell(sender as UITableViewCell)
             let vc = segue.destinationViewController as PlaceDetailController
-            vc.place = self.placeManager.places[selectedIndex!.row]
+            vc.place = self.placeManager.getPlaceAtIndex(selectedIndex!.row)
         }
     }
 

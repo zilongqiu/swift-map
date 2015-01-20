@@ -14,6 +14,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var zoomStepper: UIStepper!
     
     var placeManager: PlaceManager!;
+    var firstLocationUpdate: Bool?
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -29,19 +30,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.showLocationMarkers(self.placeManager)
     }
     
-    // Configure view default parameters
+    // MARK: - Configs
     func configure()
     {
+        // Configure map zoom
         self.mapView.setMinZoom(4.0, maxZoom: 15.0)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     // Ask access to user location
     func startLocationManager()
     {
+        self.locationManager.startUpdatingLocation()
         self.locationManager.delegate = self
         self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.stopUpdatingLocation()
     }
     
+    // Show markers already in locationManager
     func showLocationMarkers(placeManager: PlaceManager)
     {
         var places = placeManager.places;
@@ -57,6 +67,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.stopUpdatingLocation()
     }
     
+    // MARK: - Actions
     // Map Types action
     @IBAction func mapTypeSegmentPressed(sender: AnyObject) {
         let segmentedControl = sender as UISegmentedControl
@@ -81,12 +92,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
         if status == .AuthorizedWhenInUse {
-            self.locationManager.startUpdatingLocation()
- 
-            self.mapView.myLocationEnabled = true
+            self.mapView.myLocationEnabled         = true
             self.mapView.settings.myLocationButton = true
-
-            self.locationManager.stopUpdatingLocation()
         }
     }
     
@@ -115,7 +122,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    // Modal data sended
+    // Data sended from segue on add action
     func modalData(iconName: String, data: CLPlacemark) {
         self.locationManager.startUpdatingLocation()
         
@@ -131,13 +138,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.updateStepperZoomValue()
         self.locationManager.stopUpdatingLocation()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
 
 }
 
