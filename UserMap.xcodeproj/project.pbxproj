@@ -36,6 +36,7 @@
 		A5FDA0801A65DEFE00A12A8B /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA07F1A65DEFE00A12A8B /* Place.swift */; };
 		A5FDA0821A65DF4A00A12A8B /* PlaceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA0811A65DF4A00A12A8B /* PlaceManager.swift */; };
 		A5FDA0871A6716E100A12A8B /* AddPlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA0861A6716E100A12A8B /* AddPlaceController.swift */; };
+		D628DEC1CAC0FF3A5CD0008F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 77E5262E31C2BDC444818E43 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,13 +89,6 @@
 			remoteGlobalIDString = C9B1E3EB189DB3062F383C2C;
 			remoteInfo = "Pods-AFNetworking";
 		};
-		A5312B3D1A6033B900DE20CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5312AEA1A6033B900DE20CD /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 148F0D65CE50EA005BD460C3;
-			remoteInfo = "Pods-ObjectiveSugar";
-		};
 		A5312BDF1A616BC200DE20CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A5312BC61A616BC200DE20CD /* Pods.xcodeproj */;
@@ -108,13 +102,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = D7053A5301665C216B6570A1;
 			remoteInfo = "Pods-AFNetworking";
-		};
-		A5312BE31A616BC200DE20CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5312BC61A616BC200DE20CD /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0FC4E6C82E6CF91D74680EAE;
-			remoteInfo = "Pods-ObjectiveSugar";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1061,6 +1048,7 @@
 				A5FDA0381A61AFE400A12A8B /* CoreData.framework in Frameworks */,
 				A5FDA0361A61AFDC00A12A8B /* AVFoundation.framework in Frameworks */,
 				A5312C191A616DEA00DE20CD /* libPods.a in Frameworks */,
+				D628DEC1CAC0FF3A5CD0008F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2219,7 +2207,6 @@
 			children = (
 				A5312B321A6033B900DE20CD /* libPods.a */,
 				A5312B341A6033B900DE20CD /* libPods-AFNetworking.a */,
-				A5312B3E1A6033B900DE20CD /* libPods-ObjectiveSugar.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2567,7 +2554,6 @@
 			children = (
 				A5312BE01A616BC200DE20CD /* libPods.a */,
 				A5312BE21A616BC200DE20CD /* libPods-AFNetworking.a */,
-				A5312BE41A616BC200DE20CD /* libPods-ObjectiveSugar.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2809,13 +2795,6 @@
 			remoteRef = A5312B331A6033B900DE20CD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		A5312B3E1A6033B900DE20CD /* libPods-ObjectiveSugar.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-ObjectiveSugar.a";
-			remoteRef = A5312B3D1A6033B900DE20CD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		A5312BE01A616BC200DE20CD /* libPods.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -2828,13 +2807,6 @@
 			fileType = archive.ar;
 			path = "libPods-AFNetworking.a";
 			remoteRef = A5312BE11A616BC200DE20CD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		A5312BE41A616BC200DE20CD /* libPods-ObjectiveSugar.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-ObjectiveSugar.a";
-			remoteRef = A5312BE31A616BC200DE20CD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -3036,10 +3008,7 @@
 				);
 				INFOPLIST_FILE = UserMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Mapbox-iOS-SDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UserMap/Bridging-Header.h";
@@ -3057,10 +3026,7 @@
 				);
 				INFOPLIST_FILE = UserMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Mapbox-iOS-SDK",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UserMap/Bridging-Header.h";
 			};

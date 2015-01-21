@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>This application requires location services to work.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application requires location services to work.</string>
 	<key>CFBundleDevelopmentRegion</key>

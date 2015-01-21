@@ -13,9 +13,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var mapView: GMSMapView!
     @IBOutlet var zoomStepper: UIStepper!
     
-    var placeManager: PlaceManager!;
-    var firstLocationUpdate: Bool?
     let locationManager = CLLocationManager()
+    
+    var placeManager: PlaceManager!
+    var mapManager: MapManager = MapManager()
+    var firstLocationUpdate: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,49 +25,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // Configure view default parameters
         self.configure()
         
-        // Start locationManager
+        // Initialize locationManager
         self.startLocationManager()
-        
-        // Add all locationManager places marker
-        self.showLocationMarkers(self.placeManager)
     }
+    
     
     // MARK: - Configs
     func configure()
     {
         // Configure map zoom
         self.mapView.setMinZoom(4.0, maxZoom: 15.0)
+        self.mapManager.mapView = self.mapView
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // Ask access to user location
+    // Initialize locationManager
     func startLocationManager()
     {
+        // Ask access to user location
         self.locationManager.startUpdatingLocation()
         self.locationManager.delegate = self
-        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.requestAlwaysAuthorization()
         self.locationManager.stopUpdatingLocation()
+        
+        // Add all locationManager places marker
+        self.locationManager.startUpdatingLocation()
+        self.mapManager.showLocationMarkers(self.placeManager)
+        self.locationManager.stopUpdatingLocation()
+        self.updateStepperZoomValue()
     }
     
-    // Show markers already in locationManager
-    func showLocationMarkers(placeManager: PlaceManager)
-    {
-        var places = placeManager.places;
-        
-        self.locationManager.startUpdatingLocation()
-        for (place) in places {
-            // Create marker
-            var position = CLLocationCoordinate2DMake(place.latitude, place.longitude)
-            var marker = GMSMarker(position: position)
-            marker.icon = UIImage(named: place.type)
-            marker.map = self.mapView;
-        }
-        self.locationManager.stopUpdatingLocation()
-    }
     
     // MARK: - Actions
     // Map Types action
@@ -85,13 +73,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     // Map Zoom action
     @IBAction func zoomStepperAction(sender: UIStepper) {
-        self.mapView.animateToZoom(Float(sender.value));
+        self.mapView.animateToZoom(Float(sender.value))
     }
     
     // Invoke CLLocationManagerDelegate when the user grants or revokes location permissions
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
-        if status == .AuthorizedWhenInUse {
+        if status == .Authorized || status == .AuthorizedWhenInUse {
             self.mapView.myLocationEnabled         = true
             self.mapView.settings.myLocationButton = true
         }
@@ -100,7 +88,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     // Update zoomStepperValue
     func updateStepperZoomValue()
     {
-        self.zoomStepper.value = Double(self.mapView.camera.zoom);
+        self.zoomStepper.value = Double(self.mapView.camera.zoom)
     }
     
     // MARK: - Segue
@@ -117,7 +105,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         if (segue.identifier == "addPlace") {
-            let vc = segue.destinationViewController as AddPlaceController
+            let vc          = segue.destinationViewController as AddPlaceController
             vc.placeManager = self.placeManager
         }
     }
@@ -127,10 +115,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         self.locationManager.startUpdatingLocation()
         
         // Create marker
-        var position = CLLocationCoordinate2DMake(data.location.coordinate.latitude, data.location.coordinate.longitude)
-        var marker = GMSMarker(position: position)
-        marker.icon = UIImage(named: iconName)
-        marker.map = self.mapView;
+        self.mapManager.createMarker(data.location.coordinate.latitude, longitude: data.location.coordinate.longitude, iconFlag: iconName)
         
         // Camera position
         self.mapView.camera = GMSCameraPosition(target: data.location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
