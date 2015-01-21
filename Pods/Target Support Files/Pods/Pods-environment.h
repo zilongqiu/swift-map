@@ -48,3 +48,15 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 5
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 0
 
+// SugarRecord/Core
+#define COCOAPODS_POD_AVAILABLE_SugarRecord_Core
+#define COCOAPODS_VERSION_MAJOR_SugarRecord_Core 1
+#define COCOAPODS_VERSION_MINOR_SugarRecord_Core 0
+#define COCOAPODS_VERSION_PATCH_SugarRecord_Core 7
+
+// SugarRecord/CoreData
+#define COCOAPODS_POD_AVAILABLE_SugarRecord_CoreData
+#define COCOAPODS_VERSION_MAJOR_SugarRecord_CoreData 1
+#define COCOAPODS_VERSION_MINOR_SugarRecord_CoreData 0
+#define COCOAPODS_VERSION_PATCH_SugarRecord_CoreData 7
+

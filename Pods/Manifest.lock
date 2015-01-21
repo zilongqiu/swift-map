@@ -20,11 +20,25 @@ PODS:
   - AFNetworking/UIKit (2.5.0):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - SugarRecord/Core (1.0.7)
+  - SugarRecord/CoreData (1.0.7):
+    - SugarRecord/Core
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - SugarRecord/CoreData (from `https://github.com/SugarRecord/SugarRecord.git`)
+
+EXTERNAL SOURCES:
+  SugarRecord:
+    :git: https://github.com/SugarRecord/SugarRecord.git
+
+CHECKOUT OPTIONS:
+  SugarRecord:
+    :commit: b64ca24576140e60d6103e3d63c5a239f3b60227
+    :git: https://github.com/SugarRecord/SugarRecord.git
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
+  SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.0.beta.1
