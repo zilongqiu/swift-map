@@ -11,6 +11,8 @@
 		A51D26EA1A6F0EB800EC38E9 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51D26E91A6F0EB800EC38E9 /* MapManager.swift */; };
 		A53127D51A6014EC00DE20CD /* UserMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53127D41A6014EC00DE20CD /* UserMapTests.swift */; };
 		A5312C191A616DEA00DE20CD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5312BE01A616BC200DE20CD /* libPods.a */; };
+		A5F13EDE1A6FE41B008297D9 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5F13EDD1A6FE41B008297D9 /* Realm.framework */; };
+		A5FC05861A6FE0C5001665B4 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FC05851A6FE0C5001665B4 /* RLMSupport.swift */; };
 		A5FDA0281A61AA8700A12A8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FDA01D1A61AA8700A12A8B /* AppDelegate.swift */; };
 		A5FDA0291A61AA8700A12A8B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5FDA01E1A61AA8700A12A8B /* LaunchScreen.xib */; };
 		A5FDA02A1A61AA8700A12A8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5FDA0201A61AA8700A12A8B /* Main.storyboard */; };
@@ -1002,6 +1004,8 @@
 		A5312BD91A616BC200DE20CD /* Pods-ObjectiveSugar-prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pods-ObjectiveSugar-prefix.pch"; sourceTree = "<group>"; };
 		A5312BDA1A616BC200DE20CD /* Pods-ObjectiveSugar-Private.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Pods-ObjectiveSugar-Private.xcconfig"; sourceTree = "<group>"; };
 		A5312BDB1A616BC200DE20CD /* Pods-ObjectiveSugar.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Pods-ObjectiveSugar.xcconfig"; sourceTree = "<group>"; };
+		A5F13EDD1A6FE41B008297D9 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		A5FC05851A6FE0C5001665B4 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		A5FDA01D1A61AA8700A12A8B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5FDA01F1A61AA8700A12A8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A5FDA0211A61AA8700A12A8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -1048,6 +1052,7 @@
 				A5FDA0381A61AFE400A12A8B /* CoreData.framework in Frameworks */,
 				A5FDA0361A61AFDC00A12A8B /* AVFoundation.framework in Frameworks */,
 				A5312C191A616DEA00DE20CD /* libPods.a in Frameworks */,
+				A5F13EDE1A6FE41B008297D9 /* Realm.framework in Frameworks */,
 				D628DEC1CAC0FF3A5CD0008F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1074,6 +1079,8 @@
 		A01E746F3BCD7800C82FCC05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5F13EDD1A6FE41B008297D9 /* Realm.framework */,
+				A5FDA0331A61AF6600A12A8B /* GoogleMaps.bundle */,
 				A5FDA0481A61B04E00A12A8B /* SystemConfiguration.framework */,
 				A5FDA0451A61B03300A12A8B /* OpenGLES.framework */,
 				A5FDA0421A61B02300A12A8B /* libicucore.dylib */,
@@ -1099,7 +1106,6 @@
 		A53127AD1A6014EC00DE20CD = {
 			isa = PBXGroup;
 			children = (
-				A5FDA0331A61AF6600A12A8B /* GoogleMaps.bundle */,
 				A5FDA01C1A61AA8700A12A8B /* UserMap */,
 				A53127D11A6014EC00DE20CD /* UserMapTests */,
 				A53127B71A6014EC00DE20CD /* Products */,
@@ -2623,6 +2629,7 @@
 		A5FDA0301A61AAD600A12A8B /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
+				A5FC05851A6FE0C5001665B4 /* RLMSupport.swift */,
 				A5FDA0221A61AA8700A12A8B /* Bridging-Header.h */,
 				A5FDA0241A61AA8700A12A8B /* Info.plist */,
 			);
@@ -2877,6 +2884,7 @@
 				A51D26EA1A6F0EB800EC38E9 /* MapManager.swift in Sources */,
 				A5FDA0801A65DEFE00A12A8B /* Place.swift in Sources */,
 				A5FDA0821A65DF4A00A12A8B /* PlaceManager.swift in Sources */,
+				A5FC05861A6FE0C5001665B4 /* RLMSupport.swift in Sources */,
 				A5FDA02D1A61AA8700A12A8B /* UserMap.xcdatamodeld in Sources */,
 				A5FDA07E1A65D39900A12A8B /* PlacesTableViewController.swift in Sources */,
 			);
@@ -3008,7 +3016,10 @@
 				);
 				INFOPLIST_FILE = UserMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Realm.framework",
+				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UserMap/Bridging-Header.h";
@@ -3026,7 +3037,10 @@
 				);
 				INFOPLIST_FILE = UserMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Realm.framework",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "UserMap/Bridging-Header.h";
 			};
