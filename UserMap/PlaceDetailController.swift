@@ -43,8 +43,8 @@ class PlaceDetailController: UIViewController, CLLocationManagerDelegate {
                            "Note : \(note)/20\n\n" +
                            "Type : \(self.place.type)\n\n"
         
-        if(!self.place.comment.isEmpty) {
-            text += "Commentaire : \(self.place.comment)"
+        if(self.place.comment != nil) {
+            text += "Commentaire : \(self.place.comment!)"
         }
         self.textField.text = text
     }

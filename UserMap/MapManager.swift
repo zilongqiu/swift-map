@@ -6,18 +6,21 @@
 //  Copyright (c) 2015 Zilong. All rights reserved.
 //
 
+import SugarRecord
+
 class MapManager {
     
     var mapView: GMSMapView = GMSMapView();
     
-    // Show markers already in locationManager
-    func showLocationMarkers(placeManager: PlaceManager)
+    // Show markers already in database
+    func showLocationMarkers(data: SugarRecordResults?)
     {
-        var places = placeManager.getAll()
-
-        for (place) in places {
-            // Create marker
-            self.createMarker(place.latitude, longitude: place.longitude, iconFlag: place.type)
+        if(data!.count > 0) {
+            for index in 0..<data!.count {
+                // Create marker
+                var place: Place = data!.objectAtIndex(UInt(index)) as Place
+                self.createMarker(place.latitude, longitude: place.longitude, iconFlag: place.type)
+            }
         }
     }
     

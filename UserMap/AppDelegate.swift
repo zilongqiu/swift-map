@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Instantiate Google Maps services
         GMSServices.provideAPIKey(googleMapsApiKey)
-        
+
         return true
     }
     

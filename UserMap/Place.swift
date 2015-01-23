@@ -6,15 +6,16 @@
 //  Copyright (c) 2015 Zilong. All rights reserved.
 //
 
-class Place {
+@objc(Place)
+class Place: NSManagedObject {
     
-    var name: String                 = ""
-    var type: String                 = ""
-    var address: String              = ""
-    var country: String              = ""
-    var note: Float                  = 10.0
-    var comment: String              = ""
-    var longitude: CLLocationDegrees = 0.0
-    var latitude: CLLocationDegrees  = 0.0
+    @NSManaged var name: String
+    @NSManaged var type: String
+    @NSManaged var address: String
+    @NSManaged var country: String
+    @NSManaged var note: Float
+    @NSManaged var comment: String?
+    @NSManaged var longitude: Double
+    @NSManaged var latitude: Double
     
 }

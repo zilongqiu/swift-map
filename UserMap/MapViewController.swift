@@ -15,9 +15,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     
-    var placeManager: PlaceManager!
+    var databaseManager: DatabaseManager = DatabaseManager()
     var mapManager: MapManager = MapManager()
     var firstLocationUpdate: Bool?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         // Initialize locationManager
         self.startLocationManager()
+    }
+    
+    // Refresh the view user permission
+    override func viewWillAppear(animated: Bool) {
+        self.checkStatus(CLLocationManager.authorizationStatus())
     }
     
     
@@ -44,12 +50,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         // Ask access to user location
         self.locationManager.startUpdatingLocation()
         self.locationManager.delegate = self
+        self.checkStatus(CLLocationManager.authorizationStatus())
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.stopUpdatingLocation()
         
         // Add all locationManager places marker
         self.locationManager.startUpdatingLocation()
-        self.mapManager.showLocationMarkers(self.placeManager)
+        self.mapManager.showLocationMarkers(self.databaseManager.data)
         self.locationManager.stopUpdatingLocation()
         self.updateStepperZoomValue()
     }
@@ -79,6 +86,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     // Invoke CLLocationManagerDelegate when the user grants or revokes location permissions
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
+        self.checkStatus(status)
+    }
+    
+    // Check the location permissions
+    func checkStatus(status: CLAuthorizationStatus) {
         if status == .Authorized || status == .AuthorizedWhenInUse {
             self.mapView.myLocationEnabled         = true
             self.mapView.settings.myLocationButton = true
@@ -102,11 +114,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                     weakSelf.modalData(iconName, data: data)
                 }
             }
-        }
-        
-        if (segue.identifier == "addPlace") {
-            let vc          = segue.destinationViewController as AddPlaceController
-            vc.placeManager = self.placeManager
         }
     }
     

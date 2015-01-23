@@ -12,13 +12,19 @@ class PlacesTableViewController: UITableViewController {
     
     @IBOutlet var iconMap: UIBarButtonItem!
     
-    var placeManager = PlaceManager()
+    var databaseManager: DatabaseManager = DatabaseManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Configure view default parameters
         self.configure()
+    }
+    
+    // Refresh tableView data
+    override func viewWillAppear(animated: Bool) {
+        self.databaseManager.fetchData()
+        self.tableView.reloadData()
     }
     
     
@@ -38,7 +44,8 @@ class PlacesTableViewController: UITableViewController {
 
     // Row number
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.placeManager.count()
+        if (self.databaseManager.data == nil) { return 0 }
+        else { return self.databaseManager.data!.count }
     }
 
     // Cell configuration
@@ -47,11 +54,11 @@ class PlacesTableViewController: UITableViewController {
         var cell = tableView.dequeueReusableCellWithIdentifier("placeCell") as UITableViewCell
         
         // Get the place
-        var element = self.placeManager.getAtIndex(indexPath.row)
+        let model = self.databaseManager.data![indexPath.row] as Place
     
         // Place data
-        cell.textLabel?.text  = element.name
-        var imageName         = UIImage(named: element.type)
+        cell.textLabel?.text  = model.name
+        var imageName         = UIImage(named: model.type)
         cell.imageView?.image = imageName
     
         return cell
@@ -60,14 +67,10 @@ class PlacesTableViewController: UITableViewController {
     
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "showMap") {
-            let vc          = segue.destinationViewController as MapViewController
-            vc.placeManager = self.placeManager
-        }
-        else if (segue.identifier == "placeDetail") {
+        if (segue.identifier == "placeDetail") {
             let selectedIndex = self.tableView.indexPathForCell(sender as UITableViewCell)
             let vc            = segue.destinationViewController as PlaceDetailController
-            vc.place          = self.placeManager.getAtIndex(selectedIndex!.row)
+            vc.place          = self.databaseManager.data![selectedIndex!.row] as Place
         }
     }
 

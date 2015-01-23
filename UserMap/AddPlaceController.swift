@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import AddressBookUI
+import CoreData
+import SugarRecord
 
 class AddPlaceController: UITableViewController, CLLocationManagerDelegate {
 
@@ -22,11 +24,11 @@ class AddPlaceController: UITableViewController, CLLocationManagerDelegate {
     let placeHolderText: String            = "Commentaire"
     let locationManager: CLLocationManager = CLLocationManager()
     
-    var placeManager: PlaceManager!
-    var geocoder: CLGeocoder = CLGeocoder()
-    var types                = ["Restaurant","Hotel","Monument","Musee","Autres"]
-    var typeSelected: String = ""
-    var onDataAvailable : ((iconName: String, data: CLPlacemark) -> ())?
+    var databaseManager: DatabaseManager = DatabaseManager()
+    var geocoder: CLGeocoder             = CLGeocoder()
+    var types                            = ["Restaurant","Hotel","Monument","Musee","Autres"]
+    var typeSelected: String             = ""
+    var onDataAvailable: ((iconName: String, data: CLPlacemark) -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +36,7 @@ class AddPlaceController: UITableViewController, CLLocationManagerDelegate {
         // Configure view default parameters
         self.configure()
     }
-    
+
     
     // MARK: - Configs
     func configure()
@@ -101,30 +103,33 @@ class AddPlaceController: UITableViewController, CLLocationManagerDelegate {
             alert.show()
         }
         else {
-            var place     = Place()
-            place.name    = self.name.text
-            place.type    = (self.typeSelected == "") ? self.types[0] : self.typeSelected
-            place.address = self.address.text
-            place.note    = self.note.value
+            
+            // Create the place
+            let model = Place.create() as Place
+            model.name = self.name.text
+            model.type = (self.typeSelected == "") ? self.types[0] : self.typeSelected
+            model.address = self.address.text
+            model.note = self.note.value
             
             // Don't retrieve the comment if its equal to placeHolderText
             if(self.comment.text != placeHolderText) {
-                place.comment = self.comment.text
+                model.comment = self.comment.text
             }
             
             geocoder.geocodeAddressString(self.address.text, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
                 if let placemark = placemarks?[0] as? CLPlacemark {
-                    place.longitude = placemark.location.coordinate.longitude
-                    place.latitude  = placemark.location.coordinate.latitude
-                    place.country   = placemark.country
+                    model.longitude = placemark.location.coordinate.longitude
+                    model.latitude  = placemark.location.coordinate.latitude
+                    model.country   = placemark.country
                     
                     // Send new location in MapViewController
-                    self.sendData(place.type, data: placemark)
+                    self.sendData(model.type, data: placemark)
+                    
+                    // Save the place
+                    model.save()
+                    self.databaseManager.fetchData()
                 }
             })
-            
-            // Add a Place in the manager
-            self.placeManager.places.append(place)
             
             // Dismiss the modal
             self.dismissViewControllerAnimated(true, completion: {})
