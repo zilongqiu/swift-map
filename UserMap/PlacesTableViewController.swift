@@ -64,6 +64,15 @@ class PlacesTableViewController: UITableViewController {
         return cell
     }
     
+    // Delete row method
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == .Delete) {
+            let model = self.databaseManager.data![indexPath.row] as Place
+            model.beginWriting().delete().endWriting()
+            self.databaseManager.fetchData()
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
     
     // MARK: - Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
