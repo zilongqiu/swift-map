@@ -2,9 +2,9 @@
 
 **User Travel Book** allow you to comment and save places. 
 
-[![image](http://img11.hostingpics.net/pics/483472iOSSimulatorScreenShot23janv2015152025.png)]
-[![image](http://img11.hostingpics.net/pics/290964iOSSimulatorScreenShot23janv2015151639.png)]
-[![image](http://img11.hostingpics.net/pics/362804iOSSimulatorScreenShot23janv2015151923.png)]
+![ScreenShot](http://img11.hostingpics.net/pics/483472iOSSimulatorScreenShot23janv2015152025.png)
+![ScreenShot](http://img11.hostingpics.net/pics/290964iOSSimulatorScreenShot23janv2015151639.png)
+![ScreenShot](http://img11.hostingpics.net/pics/362804iOSSimulatorScreenShot23janv2015151923.png)
 
 ## Requirements
 
