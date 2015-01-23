@@ -2,12 +2,21 @@
 
 **User Travel Book** allow you to comment and save places. 
 
+[![image](http://img11.hostingpics.net/pics/483472iOSSimulatorScreenShot23janv2015152025.png)]
+[![image](http://img11.hostingpics.net/pics/290964iOSSimulatorScreenShot23janv2015151639.png)]
+[![image](http://img11.hostingpics.net/pics/362804iOSSimulatorScreenShot23janv2015151923.png)]
+
 ## Requirements
 
 - Currently only working on Iphone 6 
 - Xcode 6
 - iOS 8.0+
 - If you have troubles with the compilation try to clean the DerivedData Xcode directory: `rm -rf ~/Library/Developer/Xcode/DerivedData/`
+
+## Installation
+
+- Download the project
+- pod install
 
 ## Tests
 
