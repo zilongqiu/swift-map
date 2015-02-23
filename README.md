@@ -2,7 +2,7 @@
 
 ## What is User Travel Book?
 
-[![Build Status](https://travis-ci.org/tsubasa456/swift-map.svg?branch=master)](https://travis-ci.org/tsubasa456/swift-map)
+[![Build Status](https://travis-ci.org/zilongqiu/swift-map.svg?branch=master)](https://travis-ci.org/zilongqiu/swift-map)
 
 **User Travel Book** allow you to comment and save places. 
 
